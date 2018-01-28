@@ -3,7 +3,8 @@ import './Timer.css';
 import Button from "../UI/Button/Button";
 const timer = (props) => {
 
-    const  { secondsRemaining, totalSeconds, reset } = props
+    const  { secondsRemaining, totalSeconds, reset, notifcationsAllowed } = props
+    const fillPercentage = ((totalSeconds - secondsRemaining) / totalSeconds) * 100 + '%';
 
     const getSeconds = () => {
         return ('0' + secondsRemaining % 60).slice(-2)
@@ -11,7 +12,6 @@ const timer = (props) => {
     const getMinutes = () => {
         return Math.floor(secondsRemaining / 60);
     }
-
     const seconds = getSeconds();
     const minutes = getMinutes();
 
@@ -21,10 +21,7 @@ const timer = (props) => {
     }
     document.title = titleText;
 
-    const fillPercentage = ((totalSeconds - secondsRemaining )/ totalSeconds) * 100 + '%';
-
-
-        let formattedTime =
+    let formattedTime =
         <div className='timer'>
             {`${getMinutes()}`}
             <div className="tomato-container">

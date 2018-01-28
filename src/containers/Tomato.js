@@ -10,9 +10,30 @@ class Tomato extends Component {
         this.state = {
             playing: false,
             secondsRemaining: 0,
-            totalSeconds: 0
+            totalSeconds: 0,
+            notificationsAllowed: false,
         }
     }
+
+    componentDidMount() {
+        if ("Notification" in window) {
+            const notificationLevel = Notification.permission;
+            if (notificationLevel === 'granted' ) {
+                this.setState({notificationsAllowed: true})
+            } else if (notificationLevel === 'default') {
+                Notification.requestPermission()
+                    .then(res => {
+                        if(res === 'granted') {
+                            this.setState({ notificationsAllowed: true })
+                        } else {
+                            this.setState({ notificationsAllowed: false })
+                        }
+                    }).catch(err => console.log(err))
+            }
+
+        }
+    }
+
     selectionHandler(selection) {
         let seconds = null;
         switch (selection) {
@@ -39,7 +60,15 @@ class Tomato extends Component {
             if (this.state.secondsRemaining === 0) {
                 clearInterval(this.interval);
                 this.setState({ playing: false });
-                alert('timer done')
+                if (this.state.notificationsAllowed) {
+                    new Notification('🔔🔔🔔 Timer Done!!');
+
+                } else {
+                    alert('🔔🔔🔔 Timer Done!!')
+
+                }
+
+
             } else {
                 this.setState((prevState, props) => {
                     return {
