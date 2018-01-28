@@ -2,19 +2,30 @@ import React from 'react';
 import './Timer.css';
 import Button from "../UI/Button/Button";
 const timer = (props) => {
+
+    const  { secondsRemaining, totalSeconds, reset } = props
+
     const getSeconds = () => {
-        return ('0' + props.secondsRemaining % 60).slice(-2)
+        return ('0' + secondsRemaining % 60).slice(-2)
     }
     const getMinutes = () => {
-        return Math.floor(props.secondsRemaining / 60);
+        return Math.floor(secondsRemaining / 60);
     }
-    let titleText = `${getMinutes()}:${getSeconds()}`;
+
+    const seconds = getSeconds();
+    const minutes = getMinutes();
+
+    let titleText = `${minutes}:${seconds}`;
     if(titleText === '0:00') {
         titleText = '🔔🔔🔔 Timer Done'
     }
     document.title = titleText;
+
+    const fillPercentage = ((totalSeconds - secondsRemaining )/ totalSeconds) * 100 + '%';
+
+
         let formattedTime =
-        <div className='timer blink'>
+        <div className='timer'>
             {`${getMinutes()}`}
             <div className="tomato-container">
             <span className="tomato">🍅</span>
@@ -24,9 +35,12 @@ const timer = (props) => {
         </div>;
 
     return (
-        <div>
+        <div className="timer-container">
+            <div className="progress">
+                <div className="inner-progress" style={{ width: fillPercentage}}></div>
+            </div>
             {formattedTime}
-            <Button onClick={props.reset}>Reset</Button>
+            <Button onClick={reset}>Reset</Button>
 
         </div>
     );

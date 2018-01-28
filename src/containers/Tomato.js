@@ -9,27 +9,28 @@ class Tomato extends Component {
         this.resetTimer = this.resetTimer.bind(this)
         this.state = {
             playing: false,
-            secondsRemaining: 0
+            secondsRemaining: 0,
+            totalSeconds: 0
         }
     }
     selectionHandler(selection) {
-        let secondsRemaining = null;
+        let seconds = null;
         switch (selection) {
             case 'work':
-                secondsRemaining = 1500
+                seconds = 1500
                 break;
             case 'break':
-                secondsRemaining = 300
+                seconds = 300
                 break;
             case 'longBreak':
-                secondsRemaining = 5
+                seconds = 5
                 break;
             default:
-                secondsRemaining = 1500
+                seconds = 1500
                 break;
         }
 
-        this.setState({ playing: true, secondsRemaining: secondsRemaining })
+        this.setState({ playing: true, secondsRemaining: seconds, totalSeconds: seconds })
         this.startTimer();
     }
 
@@ -59,6 +60,7 @@ class Tomato extends Component {
         if (this.state.playing) {
             output = <Timer
                 secondsRemaining={this.state.secondsRemaining}
+                totalSeconds={this.state.totalSeconds}
                 reset={this.resetTimer}
             />
         }
