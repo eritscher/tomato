@@ -6,5 +6,5 @@ body {
     padding: 0;
     height: 100%;
     font-family: 'PT Sans', sans-serif;
-    background: #fff7f7;
+    background: rgba(245, 219, 219, .15);
 }

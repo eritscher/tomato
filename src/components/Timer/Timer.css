@@ -6,10 +6,10 @@
 .progress {
     width: 100%;
     position: absolute;
-    top: -1px;
+    top: 0;
     left: 0;
     height: 2px;
-    background: #c3c3c3;
+
 }
 
 .inner-progress {
