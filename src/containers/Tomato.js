@@ -22,7 +22,7 @@ class Tomato extends Component {
                 secondsRemaining = 300
                 break;
             case 'longBreak':
-                secondsRemaining = 900
+                secondsRemaining = 5
                 break;
             default:
                 secondsRemaining = 1500
@@ -35,11 +35,17 @@ class Tomato extends Component {
 
     startTimer() {
         this.interval = setInterval(() => {
-            this.setState((prevState, props) => {
-                return {
-                    secondsRemaining: prevState.secondsRemaining - 1
-                }
-            })
+            if (this.state.secondsRemaining === 0) {
+                clearInterval(this.interval);
+                this.setState({ playing: false });
+                alert('timer done')
+            } else {
+                this.setState((prevState, props) => {
+                    return {
+                        secondsRemaining: prevState.secondsRemaining - 1
+                    }
+                })
+            }
         }, 1000);
     }
     resetTimer() {
