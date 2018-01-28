@@ -1,0 +1,14 @@
+.timer{
+    font-size: 60px;
+    font-family: 'VT323', monospace;
+
+}
+
+.blink {
+    opacity: 0;
+    animation: blinker 2s infinite
+}
+
+@keyframes blinker {
+  50% { opacity: 1; }
+}

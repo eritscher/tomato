@@ -1,12 +1,14 @@
 import React from "react";
+import Button from '../UI/Button/Button';
 
 const selection = (props) => {
 
     return (
         <div>
-            <button onClick={()=> props.selectionHandler('work')} >Work</button>
-            <button onClick={() => props.selectionHandler('break')}>Break</button>
-            <button onClick={() => props.selectionHandler('longBreak')}>Long Break</button>
+            <Button onClick={() => props.selectionHandler('work')} >Work</Button>
+            <Button onClick={() => props.selectionHandler('break')} > Short Break</Button>
+            <Button onClick={() => props.selectionHandler('longBreak')} >Long Break</Button>
+
         </div>
     );
 

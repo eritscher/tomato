@@ -1,5 +1,6 @@
 import React from 'react';
-
+import './Timer.css';
+import Button from "../UI/Button/Button";
 const timer = (props) => {
     const getSeconds = () => {
         return ('0' + props.secondsRemaining % 60).slice(-2)
@@ -7,12 +8,17 @@ const timer = (props) => {
     const getMinutes = () => {
         return Math.floor(props.secondsRemaining / 60);
     }
-    let formattedTime = `${getMinutes()}:${getSeconds()}`;
+    let formattedTime =
+        <div className='timer blink'>
+            {`${getMinutes()}`}
+            <span>:</span>
+            {`${getSeconds()}`}
+        </div>;
 
     return (
         <div>
             {formattedTime}
-            <button onClick={props.reset}>Reset</button>
+            <Button onClick={props.reset}>Reset</Button>
 
         </div>
     );
