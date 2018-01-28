@@ -11,7 +11,10 @@ const timer = (props) => {
     let formattedTime =
         <div className='timer blink'>
             {`${getMinutes()}`}
-            <span>:</span>
+            <div className="tomato-container">
+            <span className="tomato">🍅</span>
+            <span className="tomato">🍅</span>
+            </div>
             {`${getSeconds()}`}
         </div>;
 

@@ -1,12 +1,25 @@
 .timer{
     font-size: 60px;
     font-family: 'VT323', monospace;
+    display: flex;
+    justify-content: center;
 
 }
 
 .blink {
     opacity: 0;
     animation: blinker 2s infinite
+}
+
+.tomato-container {
+display: flex;
+justify-content: center;
+flex-direction: column;
+}
+.tomato {
+
+    font-size: 13px;
+    margin: 0px 4px;
 }
 
 @keyframes blinker {
