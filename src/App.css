@@ -1,15 +1,19 @@
 .App {
   text-align: center;
+  /* height: 100vh; */
   display: flex;
-  align-items: center;
-  height: 100vh;
   justify-content: center;
   flex-direction: column;
+    align-items: center;
+
+}
+
+.App-Header {
 }
 .App-Container {
     border: 1px solid #ccc;
   border-radius: 3px;
-      width: 80%;
+    width: 80%;
     padding: 40px;
 }
 
