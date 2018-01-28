@@ -8,7 +8,12 @@ const timer = (props) => {
     const getMinutes = () => {
         return Math.floor(props.secondsRemaining / 60);
     }
-    let formattedTime =
+    let titleText = `${getMinutes()}:${getSeconds()}`;
+    if(titleText === '0:00') {
+        titleText = '🔔🔔🔔 Timer Done'
+    }
+    document.title = titleText;
+        let formattedTime =
         <div className='timer blink'>
             {`${getMinutes()}`}
             <div className="tomato-container">
