@@ -112,7 +112,7 @@ class Tomato extends Component {
             <div>
                 {timerOutput}
                 <TaskList
-                    disabled={this.state.playing}
+                    playing={this.state.playing}
                     tasks={this.state.taskList}
                     addTask={this.addTaskHandler}
                     handleRemoveTask={this.removeTaskHandler}

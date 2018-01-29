@@ -24,11 +24,3 @@
 .input:focus {
     background: #f9f9f9;
 }
-
-.input:disabled {
-    cursor: not-allowed;
-    opacity: 0.25;
-    background: tomato;
-    color: #fff;
-
-}
