@@ -1,0 +1,26 @@
+/* .task:not(:last-of-type) {
+    border-bottom: 1px solid #c3c4c5;
+
+} */
+.task {
+    padding: 10px 5px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+    border-bottom: 1px solid #c3c4c5;
+    display: flex;
+    max-height: 30px;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+.task-text {
+        text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.task-delete {
+    font-size: 1.5em;
+    padding: 10px;
+    cursor: pointer;
+}

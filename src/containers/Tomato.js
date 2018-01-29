@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import Timer from '../components/Timer/Timer';
 import Selection from '../components/Selection/Selection';
+import TaskList from '../components/TaskList/TaskList';
 class Tomato extends Component {
     constructor(props) {
         super(props);
         this.selectionHandler = this.selectionHandler.bind(this);
         this.startTimer = this.startTimer.bind(this);
-        this.resetTimer = this.resetTimer.bind(this)
+        this.resetTimer = this.resetTimer.bind(this);
+        this.addTaskHandler = this.addTaskHandler.bind(this);
+        this.removeTaskHandler = this.removeTaskHandler.bind(this);
         this.state = {
             playing: false,
             secondsRemaining: 0,
             totalSeconds: 0,
             notificationsAllowed: false,
+            taskList: []
         }
     }
 
@@ -82,19 +86,39 @@ class Tomato extends Component {
         clearInterval(this.interval);
         this.setState({ playing: false, secondsRemaining: 0 })
     }
-
+    addTaskHandler(value) {
+        const newTaskList = [...this.state.taskList];
+        newTaskList.push({id: newTaskList.length, value});
+        this.setState({ taskList: newTaskList})
+    }
+    removeTaskHandler(id) {
+        const filtered = this.state.taskList.filter(task => task.id !== id);
+        this.setState({taskList: filtered})
+    }
     render() {
-        let output = <Selection
+        let timerOutput = <Selection
             selectionHandler={this.selectionHandler} />;
+
         if (this.state.playing) {
-            output = <Timer
+            timerOutput = <Timer
                 secondsRemaining={this.state.secondsRemaining}
                 totalSeconds={this.state.totalSeconds}
                 reset={this.resetTimer}
             />
+
         }
 
-        return output
+        return (
+            <div>
+                {timerOutput}
+                <TaskList
+                    disabled={this.state.playing}
+                    tasks={this.state.taskList}
+                    addTask={this.addTaskHandler}
+                    handleRemoveTask={this.removeTaskHandler}
+                ></TaskList>
+            </div>
+        )
     }
 
 
