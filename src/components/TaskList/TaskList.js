@@ -13,6 +13,7 @@ const taskList = (props) => {
 
     const tasks = props.tasks.map(task => (
         <Task
+            key={task.id}
             task={task}
             handleRemoveTask={props.handleRemoveTask}
         />
