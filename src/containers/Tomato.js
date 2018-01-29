@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Timer from '../components/Timer/Timer';
 import Selection from '../components/Selection/Selection';
 import TaskList from '../components/TaskList/TaskList';
+import Explaination from '../components/Explaination/Explaination';
 class Tomato extends Component {
     constructor(props) {
         super(props);
@@ -10,11 +11,13 @@ class Tomato extends Component {
         this.resetTimer = this.resetTimer.bind(this);
         this.addTaskHandler = this.addTaskHandler.bind(this);
         this.removeTaskHandler = this.removeTaskHandler.bind(this);
+        this.explainationToggle = this.explainationToggle.bind(this);
         this.state = {
             playing: false,
             secondsRemaining: 0,
             totalSeconds: 0,
             notificationsAllowed: false,
+            showExplaination: false,
             taskList: []
         }
     }
@@ -95,6 +98,11 @@ class Tomato extends Component {
         const filtered = this.state.taskList.filter(task => task.id !== id);
         this.setState({taskList: filtered})
     }
+    explainationToggle() {
+        this.setState((prevState, props) => {
+            return {showExplaination: !prevState.showExplaination}
+        })
+    }
     render() {
         let timerOutput = <Selection
             selectionHandler={this.selectionHandler} />;
@@ -117,6 +125,11 @@ class Tomato extends Component {
                     addTask={this.addTaskHandler}
                     handleRemoveTask={this.removeTaskHandler}
                 ></TaskList>
+                <Explaination
+                    shouldShow={this.state.showExplaination}
+                    explainationToggle={this.explainationToggle}
+                ></Explaination>
+                <a onClick={this.explainationToggle} className="what-is">What is Pomodoro?</a>
             </div>
         )
     }

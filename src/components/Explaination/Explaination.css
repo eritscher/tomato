@@ -1,0 +1,17 @@
+.explaination-container {
+    position: fixed;
+    z-index: 500;
+    background-color: #fff;
+    width: 70%;
+    box-shadow: 1px 2px 3px #c3c3c3;
+    padding: 16px;
+    left: 15%;
+    top: 10%;
+    box-sizing: border-box;
+    transform: translateY(-100vh);
+    transition: all .4s ease-in-out
+}
+.explaination-container.open {
+        transform: translateY(0vh);
+
+}

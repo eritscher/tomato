@@ -8,12 +8,14 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-Header">
-          <h2>Keep yourself productive with this iteration of Pomodoro</h2>
+          <h1>Keep yourself productive with Pomodoro</h1>
         </div>
         <div className="App-Container">
           <Tomato></Tomato>
         </div>
-        <div className="App-Footer"></div>
+        <div className="App-Footer">
+
+      </div>
       </div>
     );
   }

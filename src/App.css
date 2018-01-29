@@ -8,11 +8,47 @@
 
 }
 
-.App-Header {
-}
 .App-Container {
   background: #fff;
   box-shadow: 1px 2px 3px #c3c3c3;
     width: 80%;
+    position: relative;
 }
 
+.App-Footer {
+  text-align: left;
+}
+.what-is {
+      position: absolute;
+    top: 9px;
+    right: 10px;
+    font-size: 10px;
+}
+.what-is:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+a {
+
+  color: dodgerblue;
+  text-decoration: none;
+}
+a:visited {
+  color: dodgerblue;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+    text-align: left;
+    padding: 0;
+}
+li {
+padding: 5px 0;
+}
+ul p {
+    border-bottom: 1px solid #c9c9c9;
+    padding-bottom: 0.5em;
+    margin-bottom: .5em;
+    font-weight: 600;
+  }
