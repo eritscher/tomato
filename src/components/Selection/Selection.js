@@ -2,7 +2,7 @@ import React from "react";
 import Button from '../UI/Button/Button';
 import './Selection.css';
 const selection = (props) => {
-    document.title = 'Pomodoro App'
+    document.title = 'Tomato Tomato'
     return (
         <div className='btn-container'>
             <Button onClick={() => props.selectionHandler('work')}> I need to work</Button>
