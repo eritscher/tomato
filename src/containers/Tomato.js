@@ -12,6 +12,7 @@ class Tomato extends Component {
         this.addTaskHandler = this.addTaskHandler.bind(this);
         this.removeTaskHandler = this.removeTaskHandler.bind(this);
         this.explainationToggle = this.explainationToggle.bind(this);
+
         this.state = {
             playing: false,
             secondsRemaining: 0,
@@ -22,6 +23,12 @@ class Tomato extends Component {
         }
     }
 
+    componentWillMount() {
+        const tasks = localStorage.getItem('tasks');
+        if (tasks) {
+            this.setState({taskList: JSON.parse(tasks)})
+        }
+    }
     componentDidMount() {
         if ("Notification" in window) {
             const notificationLevel = Notification.permission;
@@ -92,10 +99,13 @@ class Tomato extends Component {
     addTaskHandler(value) {
         const newTaskList = [...this.state.taskList];
         newTaskList.push({id: newTaskList.length, value});
-        this.setState({ taskList: newTaskList})
+        localStorage.setItem('tasks', JSON.stringify(newTaskList));
+        this.setState({ taskList: newTaskList});
+
     }
     removeTaskHandler(id) {
         const filtered = this.state.taskList.filter(task => task.id !== id);
+        localStorage.setItem('tasks', JSON.stringify(filtered));
         this.setState({taskList: filtered})
     }
     explainationToggle() {
