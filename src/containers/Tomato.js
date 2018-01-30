@@ -56,7 +56,7 @@ class Tomato extends Component {
                 seconds = 300
                 break;
             case 'longBreak':
-                seconds = 5
+                seconds = 900
                 break;
             default:
                 seconds = 1500
