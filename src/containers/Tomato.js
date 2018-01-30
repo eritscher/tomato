@@ -12,22 +12,20 @@ class Tomato extends Component {
         this.addTaskHandler = this.addTaskHandler.bind(this);
         this.removeTaskHandler = this.removeTaskHandler.bind(this);
         this.explainationToggle = this.explainationToggle.bind(this);
-
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
         this.state = {
             playing: false,
             secondsRemaining: 0,
             totalSeconds: 0,
             notificationsAllowed: false,
             showExplaination: false,
-            taskList: []
+            taskList: tasks
         }
+
     }
 
     componentWillMount() {
-        const tasks = localStorage.getItem('tasks');
-        if (tasks) {
-            this.setState({taskList: JSON.parse(tasks)})
-        }
+
     }
     componentDidMount() {
         if ("Notification" in window) {
