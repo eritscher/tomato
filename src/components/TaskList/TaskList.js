@@ -2,6 +2,8 @@ import React from 'react';
 import Task from './Task/Task';
 import './TaskList.css';
 
+import PropTypes from 'prop-types';
+
 const taskList = (props) => {
 
     const handleKeyUp = (e) => {
@@ -37,3 +39,11 @@ const taskList = (props) => {
 };
 
 export default taskList;
+
+taskList.propTypes = {
+    addTask: PropTypes.func,
+    tasks: PropTypes.array,
+    playing: PropTypes.bool,
+    disabled: PropTypes.bool
+
+};

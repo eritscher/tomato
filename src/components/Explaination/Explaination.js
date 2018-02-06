@@ -2,6 +2,8 @@ import React from 'react';
 import Backdrop from '../UI/Backdrop/Backdrop';
 import './Explaination.css';
 
+import PropTypes from 'prop-types';
+
 const explaination = (props) => {
     let openClass = props.shouldShow ? 'open' : 'close';
     return (
@@ -32,4 +34,9 @@ const explaination = (props) => {
     )
 }
 
-export default explaination
+export default explaination;
+
+explaination.propTypes = {
+    shouldShow: PropTypes.bool.isRequired,
+    explainationToggle: PropTypes.func.isRequired
+};

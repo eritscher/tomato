@@ -1,6 +1,7 @@
 import React from "react";
 import Button from '../UI/Button/Button';
 import './Selection.css';
+import PropTypes from 'prop-types';
 const selection = (props) => {
     document.title = 'Tomato Tomato'
     return (
@@ -14,4 +15,8 @@ const selection = (props) => {
 
 };
 
-export default selection
+export default selection;
+
+selection.propTypes = {
+    selectionHandler: PropTypes.func
+};

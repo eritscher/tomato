@@ -1,6 +1,8 @@
 import React from 'react';
 import './Timer.css';
 import Button from "../UI/Button/Button";
+import PropTypes from 'prop-types';
+
 const timer = (props) => {
 
     const  { secondsRemaining, totalSeconds, reset } = props
@@ -44,3 +46,9 @@ const timer = (props) => {
 }
 
 export default timer;
+
+timer.propTypes = {
+    secondsRemaining: PropTypes.number.isRequired,
+    totalSeconds: PropTypes.number.isRequired,
+    reset: PropTypes.func
+}
