@@ -4,43 +4,51 @@ import './TaskList.css';
 
 import PropTypes from 'prop-types';
 
-const taskList = (props) => {
-
-    const handleKeyUp = (e) => {
+class TaskList extends React.Component {
+    constructor(props) {
+        super(props)
+        this.newTaskInput = React.createRef();
+    }
+    handleKeyUp = (e) => {
         if (e.keyCode === 13) {
-            props.addTask(e.target.value);
-            this.newTaskInput.value = '';
+            this.props.addTask(e.target.value);
+
+            this.newTaskInput.current.focus()
+
+            this.newTaskInput.current.value = '';
         }
     }
 
-    const tasks = props.tasks.map(task => (
+    createTasks = () => this.props.tasks.map(task => (
         <Task
             key={task.id}
             task={task}
-            handleRemoveTask={props.handleRemoveTask}
+            handleRemoveTask={this.props.handleRemoveTask}
         />
-    ))
-
-    return (
-        <div className="task-list-container">
-            {!props.playing ?
-                <div>
-                    <h2>Add New Tasks</h2>
-                    <div className="input-container" onKeyUp={handleKeyUp}>
-                        <input type="text" className="input" ref={el => this.newTaskInput = el} disabled={props.disabled} />
+    ));
+    render() {
+        console.log('rerender')
+        return (
+            <div className="task-list-container">
+                {!this.props.playing ?
+                    <div>
+                        <h2>Add New Tasks</h2>
+                        <div className="input-container" onKeyUp={this.handleKeyUp}>
+                            <input type="text" className="input" ref={this.newTaskInput} disabled={this.props.disabled} />
+                        </div>
                     </div>
-                </div>
-                : null}
-            {tasks}
+                    : null}
+                {this.createTasks()}
 
-        </div>
-    );
+            </div>
+        );
+    }
 
 };
 
-export default taskList;
+export default TaskList;
 
-taskList.propTypes = {
+TaskList.propTypes = {
     addTask: PropTypes.func,
     tasks: PropTypes.array,
     playing: PropTypes.bool,
