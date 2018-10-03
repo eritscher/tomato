@@ -8,7 +8,7 @@
     left: 15%;
     top: 10%;
     box-sizing: border-box;
-    transform: translateY(-100vh);
+    transform: translateY(-200vh);
     transition: all .4s ease-in-out
 }
 .explaination-container.open {

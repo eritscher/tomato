@@ -1,15 +1,15 @@
 import React from 'react';
 import Backdrop from '../UI/Backdrop/Backdrop';
-import './Explaination.css';
+import styles from './Explaination.module.css';
 
 import PropTypes from 'prop-types';
 
 const explaination = (props) => {
-    let openClass = props.shouldShow ? 'open' : 'close';
+    let openClass = props.shouldShow ? `${styles.open}` : null;
     return (
         <div>
             <Backdrop show={props.shouldShow} clicked={props.explainationToggle}></Backdrop>
-            <div className={["explaination-container", openClass].join(' ')}>
+            <div className={[`${styles['explaination-container']}`, openClass].join(' ')}>
                 <h2 style={{ textAlign: 'center' }}>What is Pomodoro?</h2>
                 <p>
                     <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Pomodoro_Technique">
