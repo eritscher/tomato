@@ -27,7 +27,6 @@ class TaskList extends React.Component {
         />
     ));
     render() {
-        console.log('rerender')
         return (
             <div className="task-list-container">
                 {!this.props.playing ?
